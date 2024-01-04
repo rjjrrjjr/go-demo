@@ -7,3 +7,32 @@ oauth
 reflect
 
 log
+
+kafka 消息生产、消费监控
+
+ES
+https://www.elastic.co/guide/en/elasticsearch/client/index.html
+https://www.elastic.co/guide/en/elasticsearch/client/go-api/current/examples.html#indices
+
+Mongodb
+
+websocket
+
+
+统计'1'
+# 事先生成包含0到255的整数的二进制形式中包含的1的数量的表格
+bit_count_table = [bin(i).count('1') for i in range(256)]
+
+def count_ones(n):
+    count = 0
+    while n > 0:
+        count += bit_count_table[n & 0xFF]
+        n >>= 8
+    return count
+
+# 示例使用
+number = 123456
+ones_count = count_ones(number)
+print(f"整数 {number} 的二进制形式包含 {ones_count} 个1。")
+
+IM

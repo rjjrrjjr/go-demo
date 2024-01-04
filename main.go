@@ -1,7 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	_ "jinrruan-demo/map"
+	"time"
+)
 
 func main() {
-	fmt.Println("=======")
+	fmt.Println("=======", time.Now())
 }

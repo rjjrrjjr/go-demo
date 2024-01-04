@@ -10,7 +10,7 @@ import (
 
 func TestGetRegisterRecordIndex(t *testing.T) {
 	fmt.Println("----------------")
-	eventId := "E167607343331775283227129"
+	eventId := "E166597549729615872003226"
 	md5Sum := md5.Sum([]byte(eventId))
 	hashHex := hex.EncodeToString(md5Sum[14:16])
 	if hashNum, err := strconv.ParseUint(hashHex, 16, 64); err != nil {
@@ -23,7 +23,7 @@ func TestGetRegisterRecordIndex(t *testing.T) {
 
 func TestIndex2(t *testing.T) {
 	fmt.Println("----------------")
-	shardValue := "E167353265340755148827129"
+	shardValue := "T164417131799701094424733"
 	partitionCount := 32
 	md5Sum := md5.Sum([]byte(shardValue))
 	hashHex := hex.EncodeToString(md5Sum[14:16])
@@ -35,9 +35,15 @@ func TestIndex2(t *testing.T) {
 	fmt.Println("=================")
 }
 
+func TestGetAttendeeIndex(t *testing.T) {
+	shardValue := "E173046876977794662481192"
+	strategyId := ShardMd5(shardValue, 32)
+	fmt.Println(strategyId)
+}
+
 // user_ticket_record 获取index，根据uid获取
 func TestIndex3(t *testing.T) {
-	shardValue := "jinrruan"
+	shardValue := "lovekidchen"
 	if _, err := strconv.ParseInt(shardValue, 10, 64); err != nil {
 		strategyId := ShardMd5(shardValue, 32)
 		fmt.Println(strategyId)
@@ -49,7 +55,7 @@ func TestIndex3(t *testing.T) {
 
 // user_ticket_stub 获取index，根据ticket_record_id获取
 func TestIndex4(t *testing.T) {
-	shardValue := "T168113985042975129633077"
+	shardValue := "T165874226016185548818344"
 	fmt.Println(ShardByLast5Char(shardValue, 32))
 }
 

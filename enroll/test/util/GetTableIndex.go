@@ -6,6 +6,10 @@ import (
 	"strconv"
 )
 
+func init() {
+	fmt.Println("================asdfg")
+}
+
 func hash(key string) uint32 {
 	hash := crc32.ChecksumIEEE([]byte(key))
 	if key != "" {
@@ -15,7 +19,7 @@ func hash(key string) uint32 {
 }
 
 func main() {
-	key := "17740127052997474793"
-	index := strconv.FormatUint(uint64(7&hash(key)), 10)
+	key := "7864300907930846319"
+	index := strconv.FormatUint(uint64(31&hash(key)), 10)
 	fmt.Println("index: ", index)
 }

@@ -4,8 +4,9 @@ go 1.15
 
 require (
 	git.code.oa.com/phoenixs/trpc-log-meet v0.1.29
-	git.code.oa.com/trpc-go/trpc-database/gorm v0.1.3
+	git.code.oa.com/trpc-go/trpc-database/gorm v0.2.0
 	git.code.oa.com/trpc-go/trpc-go v0.9.0
+	git.woa.com/fire/firedb v1.0.3 // indirect
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/go-sql-driver/mysql v1.7.0 // indirect
 	github.com/google/uuid v1.3.0

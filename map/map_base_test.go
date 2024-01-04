@@ -2,6 +2,7 @@ package _map
 
 import (
 	"fmt"
+	"strconv"
 	"testing"
 )
 
@@ -84,4 +85,19 @@ func TestDelInRange(t *testing.T) {
 	}
 
 	fmt.Println(baseMap)
+}
+
+func TestMapMap(t *testing.T) {
+	uid2PreQuestionAnswerMap := make(map[string]map[uint64]string, 0)
+
+	for i := 0; i < 10; i++ {
+		preQuestionAnswerMap, exist := uid2PreQuestionAnswerMap[strconv.FormatInt(int64(i), 10)]
+		if !exist {
+			preQuestionAnswerMap = make(map[uint64]string, 0)
+			uid2PreQuestionAnswerMap[strconv.FormatInt(int64(i), 10)] = preQuestionAnswerMap
+		}
+		preQuestionAnswerMap[uint64(i)] = strconv.FormatInt(int64(i), 10)
+	}
+
+	fmt.Println(uid2PreQuestionAnswerMap)
 }

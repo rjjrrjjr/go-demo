@@ -8,16 +8,33 @@ import (
 	"testing"
 )
 
+func init() {
+	fmt.Println("-------------------print sql")
+}
+
 func TestPrintSql(t *testing.T) {
-	signalSql := "SELECT * FROM user_ticket_record_%d where event_id = 'E168410505126674022404154' union all "
+
+	temp := "SELECT * FROM user_ticket_record_%d where event_id = 'E172942132757295923204154' and business_type = 'guest_invite'"
+
+	signalSql := temp + " union all "
 
 	for i := 0; i < 32; i++ {
 		fmt.Println(fmt.Sprintf(signalSql, i))
 	}
 }
 
+func TestPrintSignal(t *testing.T) {
+
+	temp := "alter table enroll_approval_%d modify `phone` varchar(63) NOT NULL DEFAULT '' comment '手机号码', " +
+		"modify `real_ip` varchar(63) NOT NULL DEFAULT '' comment '用户报名真实Ip',ALGORITHM=inplace,lock=none;"
+
+	for i := 0; i < 32; i++ {
+		fmt.Println(fmt.Sprintf(temp, i))
+	}
+}
+
 func TestPrintSqlIntoFile(t *testing.T) {
-	file, err := os.OpenFile("a.sql", os.O_CREATE | os.O_RDWR | os.O_TRUNC, fs.ModePerm)
+	file, err := os.OpenFile("a.sql", os.O_CREATE|os.O_RDWR|os.O_TRUNC, fs.ModePerm)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -29,5 +46,14 @@ func TestPrintSqlIntoFile(t *testing.T) {
 	for i := 0; i < 8; i++ {
 
 		_, _ = file.WriteString(fmt.Sprintln(fmt.Sprintf(signalSql, i)))
+	}
+}
+
+func TestPrintAlertSql(t *testing.T) {
+
+	temp := "alter table enroll_approval_%d modify `phone` varchar(128) NOT NULL comment '手机号码';"
+
+	for i := 0; i < 32; i++ {
+		fmt.Println(fmt.Sprintf(temp, i))
 	}
 }
