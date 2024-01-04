@@ -14,6 +14,8 @@ func TestInitDB(t *testing.T) {
 	// log 10
 	// log 20
 	// log 22
+	// log 30
+	// log 33
 	db := InitDB()
 	defer func() {
 		sqlDB, _ := db.DB()
