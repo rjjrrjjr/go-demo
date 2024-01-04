@@ -19,6 +19,7 @@ func TestInitDB(t *testing.T) {
 	var UserList []User
 	err := db.WithContext(context.Background()).Table("t_user").Order("id desc").Limit(100).Find(&UserList).Error
 	fmt.Println(UserList, err)
+
 }
 
 func TestSelect(t *testing.T) {
