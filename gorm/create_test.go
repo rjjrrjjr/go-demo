@@ -35,6 +35,7 @@ func TestSelect(t *testing.T) {
 	var user User
 	fmt.Println(&user == nil)
 	fmt.Println(&user != nil && (&user).Id != 0)
+
 }
 
 func TestSave(t *testing.T) {
