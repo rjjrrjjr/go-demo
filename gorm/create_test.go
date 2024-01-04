@@ -11,6 +11,7 @@ import (
 )
 
 func TestInitDB(t *testing.T) {
+	// log 1
 	db := InitDB()
 	defer func() {
 		sqlDB, _ := db.DB()
@@ -95,7 +96,7 @@ func TestCreate(t *testing.T) {
 
 	user := User{
 		Name: name,
-		
+
 	}
 	err := db.WithContext(context.Background()).Table("t_user").Create(&user).Error
 	fmt.Println(err)
