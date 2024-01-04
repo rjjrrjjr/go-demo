@@ -89,10 +89,13 @@ func TestCreate(t *testing.T) {
 		sqlDB, _ := db.DB()
 		_ = sqlDB.Close()
 	}()
+
 	name := strings.ReplaceAll(uuid.New().String(), "-", "")
 	fmt.Println(name)
+
 	user := User{
 		Name: name,
+		
 	}
 	err := db.WithContext(context.Background()).Table("t_user").Create(&user).Error
 	fmt.Println(err)
