@@ -66,11 +66,13 @@ func TestFDBSave(t *testing.T) {
 		sqlDB, _ := db.DB()
 		_ = sqlDB.Close()
 	}()
+
 	user := User{
 		//Id: 17,
 		Name:  "1",
 		BizId: strings.ReplaceAll(uuid.New().String(), "-", ""),
 	}
+
 	userList := []*User{&user, &User{
 		Name:  "2",
 		BizId: strings.ReplaceAll(uuid.New().String(), "-", ""),
