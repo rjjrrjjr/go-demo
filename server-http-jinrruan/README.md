@@ -51,6 +51,9 @@ http.ListenAndServe(":8080", nil)
 ```
 ![http.png](statics/http.png)
 
+#### 5、TRPC-GO中的Service配置实现
+![trpc-service.png](statics/trpc-service.png)
+
 ### 遗留问题
 - http获取连接，这里的连接是否可以控制，连接池自定义
 
