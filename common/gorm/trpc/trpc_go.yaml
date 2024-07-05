@@ -1,0 +1,43 @@
+global: #全局配置
+  namespace: Test            #环境类型，分正式production和非正式development两种类型
+  env_name: ci-200                   #环境名称，非正式环境下多环境的名称
+server: #服务端配置
+  app: wemeet                                        #业务的应用名
+  server: activity_inner_admin_service                             #进程服务名
+  bin_path: /usr/local/trpc/bin/                   #二进制可执行文件和框架配置文件所在路径
+  conf_path: /usr/local/trpc/conf/                 #业务配置文件所在路径
+  data_path: /usr/local/trpc/data/                 #业务数据文件所在路径
+  filter: #针对所有service处理函数前后的拦截器列表
+    - logger
+client: #客户端调用的后端配置
+  timeout: 3000                                    #针对所有后端的请求最长处理时间
+  filter: #针对所有后端调用函数前后的拦截器列表
+    - logger
+  service: #针对单个后端的配置
+    - name: trpc.mysql.wemeet.jinrruan
+      target: dsn://root:123456@tcp(10.91.81.64:3306)/jinrruan_parent?charset=utf8mb4&parseTime=True&loc=Local&timeout=5s
+
+plugins: #插件配置
+  database:
+    gorm:
+      # 所有数据库连接默认的连接池配置
+      max_idle: 20 # 最大空闲连接数
+      max_open: 100 # 最大在线连接数
+      max_lifetime: 180000 # 连接最大生命周期(单位：毫秒)
+  logger:
+    wemeet:
+      maxlen: 99999
+      debug: true
+      request:
+        - name: all
+          switch: true
+      response:
+        - name: all
+          switch: true   #此处设置为 true，默认全部打印
+      rpc:
+        request:
+          - name: all
+            switch: true
+        response:
+          - name: all   #远程调用的 rpc 服务路由名称
+            switch: true     #设置为 false 表示此处 rpc 调用不打印日志

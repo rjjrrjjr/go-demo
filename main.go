@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	_ "jinrruan-demo/map"
 	"time"
+
+	_ "jinrruan-demo/common/map"
 )
 
 func main() {
